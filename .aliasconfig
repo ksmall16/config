@@ -1,0 +1,105 @@
+WORKSPACE=~/Desktop/Workspace
+SERVIEW=$WORKSPACE/serview
+AUTUMN=$WORKSPACE/autumn
+
+# terminal navigation & info
+alias ..='cd .. && ls -a'
+alias ..2='cd ../.. && ls -a'
+alias ..3='cd ../../.. && ls -a'
+alias ..4='cd ../../../.. && ls -a'
+alias javav='echo "java -version" && java -version'
+alias vv='gvim -v ~/.config/.vimrc'
+alias gv='gvim -v ~/.config/.gvimrc'
+alias scratch='gvim -v ~/scratch.md'
+alias psef='ps -ef | grep '
+alias killp='kill -9'
+alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
+alias rmf='rm -rf'
+alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
+
+# config access
+alias va='gvim -v ~/.config/.aliasconfig'
+alias vf='gvim -v ~/.config/.functions'
+alias vb='gvim -v ~/.config/.bash_profile'
+alias sb='source ~/.bash_profile'
+
+# upgrade built-in utilities
+alias top='htop'
+alias du='ncdu'
+alias vim='gvim -v'
+alias ls='ls -Aoh'
+alias mkdir='mkdir -pv'
+alias cat='pygmentize -O style=monokai -f console256 -g'
+
+# location shortcuts
+alias workspace='echo "Switching to ~/Desktop/Workspace..." && cd $WORKSPACE'
+alias desktop='cd ~/Desktop'
+alias downloads='cd ~/Downloads'
+alias documents='cd ~/Documents'
+alias config='cd ~/.config'
+alias sparta='cd $WORKSPACE/sparta'
+
+# serview project locations
+alias serview='cd $SERVIEW'
+alias upgrade='cd $SERVIEW/upgrade/lmb-parent'
+alias master='cd $SERVIEW/master/lmb-parent'
+alias refactor='cd $SERVIEW/refactor/lmb-parent'
+alias loaduser='cd $WORKSPACE/eis-iloaduser/src/main/resources && git pull'
+alias userload='cd $WORKSPACE/eis-iloaduser/src/main/resources && git pull'
+alias dbadmin='cd $WORKSPACE/eis-db-admin && git pull'
+alias cdlocal='cd ../eis-local/'
+
+# autumn project locations
+alias autumn='cd $AUTUMN'
+alias employerService='cd $AUTUMN/employer-service'
+alias productService='cd $AUTUMN/product-service'
+alias employerPlugin='cd $AUTUMN/plugins/s1n-employer-plugin'
+alias productPlugin='cd $AUTUMN/plugins/s1n-product-plugin'
+alias absenceDomain='cd $AUTUMN/plugins/absence-domain'
+
+# files & directories
+alias elasticmq='cd /Users/n0290338/Desktop/Workspace && java -jar elasticmq-server-0.13.8.jar'
+alias refreshaws='cd /Users/n0290338/Downloads/aws-saml-api-keys-2.0-45 && ./apikeyretriever_darwin_amd64 && cat ~/.aws/credentials'
+alias getaws='cat ~/.aws/credentials'
+alias kill.vagrant.upgrade='cd $SERVIEW/upgrade/eis-local && vagrant halt'
+alias kill.vagrant.master='cd $SERVIEW/master/eis-local && vagrant halt'
+alias kill.vagrant.refactor='cd $SERVIEW/refactor/eis-local && vagrant halt'
+
+# maven
+alias mvn.sbr='echo "mvn spring-boot:run" && mvn spring-boot:run'
+alias mvn.cv='echo "mvn clean verify" && mvn clean verify'
+alias mvn.ci='echo "mvn clean install -U" && mvn clean install -U'
+
+# git
+alias gst='git status'
+alias gadd='git add .'
+alias greset='git reset HEAD'
+alias grh='echo "git reset --hard" && git reset --hard'
+alias gstash='git stash save --keep-index'
+alias glog='git log'
+alias gpull='git pull'
+alias gpush='git push'
+alias gcm='git commit -m'
+
+# homebrew
+alias brew.daily='echo "Brew: update, upgrade, cleanup & prune..." && brew update && brew upgrade && brew cleanup && brew prune'
+alias brew.list='echo "brew services list" && brew services list'
+
+# npm
+alias npm.list.global='npm list -g --depth=0'
+
+# vagrant
+alias vup='vagrant up; vagrant ssh'
+alias vhalt='vagrant halt'
+alias vsh='vagrant ssh'
+alias vreload='vagrant reload'
+alias vval='vagrant validate'
+
+# docker
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+
+# serview project
+alias build='mvn clean package -T 2 -DskipTests -Ddeploy-db -Pdeploy-group-policy-products,deploy-group-claims-products,deploy-indv-ici-product,deploy-indv-iac-product -DenableDevConsole=true'
+alias build.test='mvn clean package -T 2 -Ddeploy-db -Pdeploy-group-policy-products,deploy-group-claims-products,deploy-indv-ici-product,deploy-indv-iac-product -DenableDevConsole=true'
+alias docgen.test='mvn clean verify -DskipTests -pl com.lmig.ci.lmb.eis.platform:lmb-docgen-activedocs -am -P-party-reports-saml,-lmb-rating,-lmb-app,activeDocs-diffSchema-test -P lmb-enclave'

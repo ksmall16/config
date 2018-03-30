@@ -1,0 +1,165 @@
+# shortcut to rename files 
+rename() { 
+  mv -i -v $1 $2 
+}
+
+# --- [F]ind [D]irectory ---
+# search for directory by name in current location 
+fd() { 
+  sudo find -type d -name "$1" -print 
+}
+
+# --- [F]ind [F]ile ---
+# search for file by name in current location
+ff() {
+  sudo find -type f -name "$1" -print  
+}
+
+# --- [F]ind [D]irectory [R]ecursively ---
+# search for directory by name recursively 
+fdr() {
+  sudo find ./* -type d -name "$1" -print
+}
+
+# --- [F]ind [F]ile [R]ecursively ---
+# search for file by name recursively
+ffr() { 
+  sudo find ./* -type f -name "$1" -print
+}
+
+# --- [F]ind [S]tring [R]ecursively ---
+# search for a given string recursively in directory
+fsr() {
+  grep -R "$1" *  
+}
+
+# --- [C]hange [D]irectory ---
+# moves to specified directory and does an automatic ls (overrides default)
+cd() {
+  builtin cd "$@" && ls -Aoh
+}
+
+# --- [C]lean, [P]ackage, and [S]tart API ---
+# for use with Serverless functions
+cps() {
+  mvn clean &&
+  mvn package &&
+  sam local start-api -t serverless.yml; 
+}
+
+# --- Restart BTT ---
+# Restarts BetterTouchTool and 2 helpers when it acts up, then restarts
+restartBTT() {
+  kill $(ps aux | grep BetterTouchTool | grep -v grep | awk '{print $2}')
+  open /Applications/BetterTouchTool.app/
+}
+
+trash() {
+  command mv "$@" ~/.Trash ;  
+}
+
+# --- Storm ---- #
+# open project in WebStorm
+storm() {
+  open -a /Applications/WebStorm.app/ $1  
+}
+
+# --- ProxyOff ----
+# turn off cntlm proxy settings for LMdev network 
+proxyOff() {
+  echo 'Setting up proxyless env...'
+  git config --global --unset http.proxy
+  git config --global --unset https.proxy
+  npm config rm proxy
+  npm config rm https-proxy
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
+  unset ALL_PROXY
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+  echo '' > ~/.curlrc
+  echo '' > ~/.wgetrc
+  sudo networksetup -setautoproxystate "Wi-Fi" off
+  brew services stop cntlm
+}
+
+# --- ProxyOn ---
+# turn on proxy settings for LMdata network
+PROXY_ADDR=http://localhost:3128
+
+proxyOn() {
+  echo 'Setting up proxy env...'
+  sudo networksetup -setautoproxyurl "Wi-Fi" http://www-proxy-pac.lmig.com/proxy.pac
+  export HTTP_PROXY=$PROXY_ADDR
+  export HTTPS_PROXY=$PROXY_ADDR
+  export ALL_PROXY=$PROXY_ADDR
+  export http_proxy=$PROXY_ADDR
+  export https_proxy=$PROXY_ADDR
+  export all_proxy=$PROXY_ADDR
+  echo 'proxy=http://localhost:3128' > ~/.curlrc
+  echo 'use_proxy=yes' > ~/.wgetrc
+  echo 'http_proxy=http://localhost:3128' >> ~/.wgetrc
+  echo 'https_proxy=http://localhost:3128' >> ~/.wgetrc
+  git config --global http.proxy $PROXY_ADDR
+  git config --global https.proxy $PROXY_ADDR
+  npm config set proxy $PROXY_ADDR
+  npm config set https-proxy $PROXY_ADDR
+  sudo networksetup -setautoproxystate "Wi-Fi" on
+  brew services start cntlm
+}
+
+# --- [F]ind [P]ort ---
+# find process running on port $1
+findPort() {
+  lsof -i tcp:$1  
+}
+
+runLocalProfiles() {
+  mvn spring-boot:run -Dspring.profiles.active=local -Dcom.lmig.environment=local -Djava.security.egd=file:/dev/./urandom -Dlog4j.configurationFile=loag4j_trace.xml
+}
+
+employerPluginAndService() {
+  PLUGIN_DIR=~/Desktop/Workspace/autumn/plugins/s1n-employer-plugin
+  EMP_SVC_DIR=~/Desktop/Workspace/autumn/employer-service
+
+  cd $PLUGIN_DIR
+  mvn clean install
+  cd $EMP_SVC_DIR
+  mvn clean install -U
+  mvn spring-boot:run
+}
+
+productPluginAndService() {
+  PLUGIN_DIR=~/Desktop/Workspace/autumn/plugins/s1n-product-plugin
+  PRD_SVC_DIR=~/Desktop/Workspace/autumn/product-service
+
+  cd $PLUGIN_DIR
+  mvn clean install -U
+  cd $PRD_SVC_DIR
+  mvn clean install -U -DskipTests
+  mvn spring-boot:run
+}
+
+# --- Global Extract --- #
+# will extract many file types
+extract() {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xvjf $1    ;;
+      *.tar.gz)    tar xvzf $1    ;;
+      *.bz2)       bunzip2 $1     ;;
+      *.rar)       rar x $1       ;;
+      *.gz)        gunzip $1      ;;
+      *.tar)       tar xvf $1     ;;
+      *.tbz2)      tar xvjf $1    ;;
+      *.tgz)       tar xvzf $1    ;;
+      *.zip)       unzip $1       ;;
+      *.Z)         uncompress $1  ;;
+      *.7z)        7z x $1        ;;
+      *)           echo "don't know how to extract '$1'..." ;;
+    esac
+  else
+    echo "'$1' is not a valid file!"
+  fi
+}
