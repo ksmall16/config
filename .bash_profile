@@ -6,45 +6,47 @@
 # java 7/8/9 toggle
 if [ -f $HOME/.config/.javatoggle ]; then
     . $HOME/.config/.javatoggle
-    echo '(1) Java 7/8/9 loaded!'
+else
+    echo 'Java toggle not loaded!'
 fi
 
 # aliases
 if [ -f $HOME/.config/.aliasconfig ]; then
     . $HOME/.config/.aliasconfig
-    echo '(2) Aliases loaded!'
+else
+    echo 'Aliases not loaded!'
 fi
 
 # functions
 if [ -f $HOME/.config/.functions ]; then
     . $HOME/.config/.functions
-    echo '(3) Functions loaded!'
+else
+    echo 'Functions not loaded!'
 fi
 
 # bash completions
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
-    echo '(4) Bash completions loaded!'
-fi
-
-# RabbitMQ bash completions
-if [ -f $HOME/.config/.rabbit_completion ]; then
-    . $HOME/.config/.rabbit_completion
-    # echo '(6) RabbitMQ completion loaded!'
+else
+    echo 'Bash completions not loaded!'
 fi
 
 # maven config
 if [ -f $HOME/.config/.mavenconfig ]; then
     . $HOME/.config/.mavenconfig
-    # echo '(7) Maven config loaded!'
+else
+    echo 'Maven config not loaded!'
 fi
 
 # import git prompt
 if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
     source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
-		echo '(5) Git prompt loaded!'
+else
+		echo 'Git prompt not loaded!'
 fi
+
+welcomeMessage
 
 #-----------------------------------------------#
 

@@ -3,6 +3,12 @@ rename() {
   mv -i -v $1 $2 
 }
 
+# [F]ind [P]id
+# find the pid of a process with given string
+findPid () { 
+  lsof -t -c "$@" ; 
+}
+
 # --- [F]ind [D]irectory ---
 # search for directory by name in current location 
 fd() { 
@@ -30,7 +36,7 @@ ffr() {
 # --- [F]ind [S]tring [R]ecursively ---
 # search for a given string recursively in directory
 fsr() {
-  grep -R "$1" *  
+  grep -lrw $1 .
 }
 
 # --- [C]hange [D]irectory ---
@@ -162,4 +168,20 @@ extract() {
   else
     echo "'$1' is not a valid file!"
   fi
+}
+
+ii() {
+  echo -e "\nYou are logged on ${RED}$HOST"
+  echo -e "\nAdditionnal information:$NC " ; uname -a
+  echo -e "\n${RED}Users logged on:$NC " ; w -h
+  echo -e "\n${RED}Current date :$NC " ; date
+  echo -e "\n${RED}Machine stats :$NC " ; uptime
+  echo -e "\n${RED}Current network location :$NC " ; scselect
+  echo -e "\n${RED}Public facing IP Address :$NC " ;myip
+  #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
+  echo
+}
+
+welcomeMessage() {
+  fortune | cowsay -f koala 
 }

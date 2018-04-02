@@ -3,10 +3,10 @@ SERVIEW=$WORKSPACE/serview
 AUTUMN=$WORKSPACE/autumn
 
 # terminal navigation & info
-alias ..='cd .. && ls -a'
-alias ..2='cd ../.. && ls -a'
-alias ..3='cd ../../.. && ls -a'
-alias ..4='cd ../../../.. && ls -a'
+alias ..='cd ..'
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+alias ..4='cd ../../../..'
 alias javav='echo "java -version" && java -version'
 alias vv='gvim -v ~/.config/.vimrc'
 alias gv='gvim -v ~/.config/.gvimrc'

@@ -75,7 +75,7 @@ map <C-t> :NERDTreeToggle<CR>
 let g:solarized_termcolors=256
 let base16colorspace=256
 set background=dark
-colorscheme dracula
+colorscheme monokai
 let g:spacegray_underline_search = 1
 let g:spacegray_italicize_comments = 1
 set laststatus=2
