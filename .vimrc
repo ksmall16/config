@@ -1,6 +1,6 @@
 set encoding=utf8
-set nocompatible														" Not compatible wtih vi
-filetype off																" Required for Vundle
+set nocompatible			" Not compatible with vi
+filetype off				" Required for Vundle
 
 " set runtime path to include Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -14,12 +14,13 @@ call vundle#begin() " call Vundle plugins ------------------------------
   Plugin 'Shougo/neocomplete.vim'
 
   " generic programming
-  "Plugin 'vim-syntastic/syntastic'
+  Plugin 'vim-syntastic/syntastic'
   Plugin 'Townk/vim-autoclose'
   Plugin 'honza/vim-snippets'
   Plugin 'maksimr/vim-jsbeautify'
-  "Plugin 'artur-shaik/vim-javacomplete2'
-  "Plugin 'Valloric/YouCompleteMe'
+  Plugin 'artur-shaik/vim-javacomplete2'
+  Plugin 'Valloric/YouCompleteMe'
+  Plugin 'Shougo/denite.vim'
 
   " themes
   Plugin 'ryanoasis/vim-devicons'
@@ -28,10 +29,10 @@ call vundle#begin() " call Vundle plugins ------------------------------
   Plugin 'ajh17/Spacegray.vim'
 
   " general writing
-  Plugin 'reedes/vim-pencil'
-  Plugin 'tpope/vim-markdown'
-  Plugin 'jtratner/vim-flavored-markdown'
-  Plugin 'LanguageTool'
+  "Plugin 'reedes/vim-pencil'
+  "Plugin 'tpope/vim-markdown'
+  "Plugin 'jtratner/vim-flavored-markdown'
+  "Plugin 'LanguageTool'
 
 call vundle#end() " end Vundle plugins -----------------------------------
 
@@ -42,8 +43,8 @@ set spelllang=en_us
 set ttyfast
 set noerrorbells t_vb=
 autocmd! GUIEnter * set visualbell t_vb=
-autocmd! WinLeave * set nocursorline				" Highlight cursor line
-autocmd! WinEnter * set cursorline					" in current window
+autocmd! WinLeave * set nocursorline		" Highlight cursor line
+autocmd! WinEnter * set cursorline		" in current window
 
 " ui
 set smartcase
@@ -75,7 +76,7 @@ map <C-t> :NERDTreeToggle<CR>
 let g:solarized_termcolors=256
 let base16colorspace=256
 set background=dark
-colorscheme monokai
+colorscheme Spacegray
 let g:spacegray_underline_search = 1
 let g:spacegray_italicize_comments = 1
 set laststatus=2

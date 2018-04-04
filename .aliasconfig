@@ -8,25 +8,26 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 alias javav='echo "java -version" && java -version'
-alias vv='gvim -v ~/.config/.vimrc'
-alias gv='gvim -v ~/.config/.gvimrc'
-alias scratch='gvim -v ~/scratch.md'
+alias vv='nvim ~/.config/.vimrc'
+alias gv='nvim ~/.config/.gvimrc'
+alias scratch='nvim ~/scratch.md'
 alias psef='ps -ef | grep '
 alias killp='kill -9'
 alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
 alias rmf='rm -rf'
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
+alias c='clear'
 
 # config access
-alias va='gvim -v ~/.config/.aliasconfig'
-alias vf='gvim -v ~/.config/.functions'
-alias vb='gvim -v ~/.config/.bash_profile'
+alias va='nvim ~/.config/.aliasconfig'
+alias vf='nvim ~/.config/.functions'
+alias vb='nvim ~/.config/.bash_profile'
 alias sb='source ~/.bash_profile'
 
 # upgrade built-in utilities
 alias top='htop'
 alias du='ncdu'
-alias vim='gvim -v'
+alias vim='nvim'
 alias ls='ls -Aoh'
 alias mkdir='mkdir -pv'
 alias cat='pygmentize -O style=monokai -f console256 -g'
@@ -94,6 +95,9 @@ alias vhalt='vagrant halt'
 alias vsh='vagrant ssh'
 alias vreload='vagrant reload'
 alias vval='vagrant validate'
+
+# sonar
+alias sonar='sonarlint && open .sonarlint/sonarlint-report.html'
 
 # docker
 alias dps='docker ps'

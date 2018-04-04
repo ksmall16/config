@@ -73,8 +73,8 @@ export PATH
 #----- 4. Other Settings -----------------------#
 
 export SPRING_PROFILES_ACTIVE=local
-export EDITOR='gvim -v'
-export VISUAL='gvim -v'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
  # added for npm-completion https://github.com/Jephuff/npm-bash-completion
 PATH_TO_NPM_COMPLETION="/Users/n0290338/node_modules/npm-completion"
