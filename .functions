@@ -60,14 +60,11 @@ restartBTT() {
   open /Applications/BetterTouchTool.app/
 }
 
+
+#--- [T]rash ---#
+# moves given file to trash
 trash() {
   command mv "$@" ~/.Trash ;  
-}
-
-# --- Storm ---- #
-# open project in WebStorm
-storm() {
-  open -a /Applications/WebStorm.app/ $1  
 }
 
 # --- ProxyOff ----
@@ -121,10 +118,7 @@ findPort() {
   lsof -i tcp:$1  
 }
 
-runLocalProfiles() {
-  mvn spring-boot:run -Dspring.profiles.active=local -Dcom.lmig.environment=local -Djava.security.egd=file:/dev/./urandom -Dlog4j.configurationFile=loag4j_trace.xml
-}
-
+#-----------------------------------------------------------------------
 employerPluginAndService() {
   PLUGIN_DIR=~/Desktop/Workspace/autumn/plugins/s1n-employer-plugin
   EMP_SVC_DIR=~/Desktop/Workspace/autumn/employer-service
@@ -146,6 +140,7 @@ productPluginAndService() {
   mvn clean install -U -DskipTests
   mvn spring-boot:run
 }
+#----------------------------------------------------------------------
 
 # --- Global Extract --- #
 # will extract many file types
@@ -170,6 +165,7 @@ extract() {
   fi
 }
 
+# A motivating welcome message after sourcing .bash_profile
 welcomeMessage() {
   echo ''
   fortune | lolcat

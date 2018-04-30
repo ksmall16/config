@@ -2,6 +2,14 @@ set encoding=utf8
 set nocompatible			" Not compatible with vi
 filetype off				" Required for Vundle
 
+" colorscheme
+let g:solarized_termcolors=256
+let base16colorspace=256
+set background=dark
+colorscheme dracula
+set laststatus=2
+set t_Co=256
+
 " set runtime path to include Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -19,7 +27,7 @@ call vundle#begin() " call Vundle plugins ------------------------------
   Plugin 'honza/vim-snippets'
   Plugin 'maksimr/vim-jsbeautify'
   Plugin 'artur-shaik/vim-javacomplete2'
-  Plugin 'Valloric/YouCompleteMe'
+  " Plugin 'Valloric/YouCompleteMe'
   Plugin 'Shougo/denite.vim'
 
   " themes
@@ -29,10 +37,10 @@ call vundle#begin() " call Vundle plugins ------------------------------
   Plugin 'ajh17/Spacegray.vim'
 
   " general writing
-  "Plugin 'reedes/vim-pencil'
-  "Plugin 'tpope/vim-markdown'
-  "Plugin 'jtratner/vim-flavored-markdown'
-  "Plugin 'LanguageTool'
+  Plugin 'reedes/vim-pencil'
+  Plugin 'tpope/vim-markdown'
+  Plugin 'jtratner/vim-flavored-markdown'
+  Plugin 'LanguageTool'
 
 call vundle#end() " end Vundle plugins -----------------------------------
 
@@ -59,6 +67,8 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set showmatch
+set mat=2
+set hlsearch
 set mouse=a
 set backspace=indent,eol,start
 set linebreak
@@ -66,22 +76,17 @@ set foldmethod=indent
 set foldnestmax=3
 set nofoldenable
 set guifont=PT\ Mono:h14
+set ai
+set si
+
+" linebreak on 500 chars
+set lbr
+set tw=500
 
 " remapping
 map b 0
 map e $
 map <C-t> :NERDTreeToggle<CR>
-
-" colorscheme
-let g:solarized_termcolors=256
-let base16colorspace=256
-set background=dark
-colorscheme Spacegray
-let g:spacegray_underline_search = 1
-let g:spacegray_italicize_comments = 1
-set laststatus=2
-
-set t_Co=256
 
 " autocompletion: w/ neocomplete and javacomplete
 let g:acp_enableAtStartup = 0

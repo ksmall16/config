@@ -1,4 +1,5 @@
 #----- 1. RETURN IF NOT INTERACTIVE -----------#
+# prevents overwritten commands when in a script
 [ -z "$PS1" ] && return
 
 #----- 2. LOAD SCRIPTS ------------------------#
@@ -43,7 +44,7 @@ if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
     source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 else
-		echo 'Git prompt not loaded!'
+    echo 'Git prompt not loaded!'
 fi
 
 welcomeMessage
@@ -73,8 +74,8 @@ export PATH
 #----- 4. Other Settings -----------------------#
 
 export SPRING_PROFILES_ACTIVE=local
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR='gvim -v'
+export VISUAL='gvim -v'
 
  # added for npm-completion https://github.com/Jephuff/npm-bash-completion
 PATH_TO_NPM_COMPLETION="/Users/n0290338/node_modules/npm-completion"
