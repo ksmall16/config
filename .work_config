@@ -1,0 +1,106 @@
+WORKSPACE=~/Desktop/Workspace
+SERVIEW=$WORKSPACE/serview
+AUTUMN=$WORKSPACE/autumn
+
+alias workspace='echo "Switching to ~/Desktop/Workspace..." && cd $WORKSPACE'
+
+# serview project locations
+alias serview='cd $SERVIEW'
+alias upgrade='cd $SERVIEW/upgrade/lmb-parent'
+alias master='cd $SERVIEW/master/lmb-parent'
+alias refactor='cd $SERVIEW/refactor/lmb-parent'
+alias loaduser='cd $WORKSPACE/eis-iloaduser/src/main/resources && git pull'
+alias userload='cd $WORKSPACE/eis-iloaduser/src/main/resources && git pull'
+alias dbadmin='cd $WORKSPACE/eis-db-admin && git pull'
+alias cdlocal='cd ../eis-local/'
+
+# autumn project locations
+alias autumn='cd $AUTUMN'
+alias employerService='cd $AUTUMN/employer-service'
+alias productService='cd $AUTUMN/product-service'
+alias employerPlugin='cd $AUTUMN/plugins/s1n-employer-plugin'
+alias productPlugin='cd $AUTUMN/plugins/s1n-product-plugin'
+alias absenceDomain='cd $AUTUMN/plugins/absence-domain'
+alias contractService='cd $AUTUMN/systemone/systemone-contract-service/trunk'
+alias accountService='cd $AUTUMN/systemone/systemone-account-service/trunk'
+alias bff='cd $AUTUMN/lmb-absence-bff'
+
+# files & directories
+alias elasticmq='cd /Users/n0290338/Desktop/Workspace && java -jar elasticmq-server-0.13.8.jar'
+alias refreshaws='cd /Users/n0290338/Downloads/aws-saml-api-keys-2.0-45 && ./apikeyretriever_darwin_amd64 && cat ~/.aws/credentials'
+alias getaws='cat ~/.aws/credentials'
+alias kill.vagrant.upgrade='cd $SERVIEW/upgrade/eis-local && vagrant halt'
+alias kill.vagrant.master='cd $SERVIEW/master/eis-local && vagrant halt'
+alias kill.vagrant.refactor='cd $SERVIEW/refactor/eis-local && vagrant halt'
+
+# serview project
+alias build='mvn clean package -T 2 -DskipTests -Ddeploy-db -Pdeploy-group-policy-products,deploy-group-claims-products,deploy-indv-ici-product,deploy-indv-iac-product -DenableDevConsole=true'
+alias build.test='mvn clean package -T 2 -Ddeploy-db -Pdeploy-group-policy-products,deploy-group-claims-products,deploy-indv-ici-product,deploy-indv-iac-product -DenableDevConsole=true'
+alias docgen.test='mvn clean verify -DskipTests -pl com.lmig.ci.lmb.eis.platform:lmb-docgen-activedocs -am -P-party-reports-saml,-lmb-rating,-lmb-app,activeDocs-diffSchema-test -P lmb-enclave'
+
+# --- ProxyOff ----
+# turn off cntlm proxy settings for LMdev network
+proxyOff() {
+  echo 'Setting up proxyless env...'
+  git config --global --unset http.proxy
+  git config --global --unset https.proxy
+  npm config rm proxy
+  npm config rm https-proxy
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
+  unset ALL_PROXY
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+  echo '' > ~/.curlrc
+  echo '' > ~/.wgetrc
+  sudo networksetup -setautoproxystate "Wi-Fi" off
+  brew services stop cntlm
+}
+
+# --- ProxyOn ---
+# turn on proxy settings for LMdata network
+PROXY_ADDR=http://localhost:3128
+
+proxyOn() {
+  echo 'Setting up proxy env...'
+  sudo networksetup -setautoproxyurl "Wi-Fi" http://www-proxy-pac.lmig.com/proxy.pac
+  export HTTP_PROXY=$PROXY_ADDR
+  export HTTPS_PROXY=$PROXY_ADDR
+  export ALL_PROXY=$PROXY_ADDR
+  export http_proxy=$PROXY_ADDR
+  export https_proxy=$PROXY_ADDR
+  export all_proxy=$PROXY_ADDR
+  echo 'proxy=http://localhost:3128' > ~/.curlrc
+  echo 'use_proxy=yes' > ~/.wgetrc
+  echo 'http_proxy=http://localhost:3128' >> ~/.wgetrc
+  echo 'https_proxy=http://localhost:3128' >> ~/.wgetrc
+  git config --global http.proxy $PROXY_ADDR
+  git config --global https.proxy $PROXY_ADDR
+  npm config set proxy $PROXY_ADDR
+  npm config set https-proxy $PROXY_ADDR
+  sudo networksetup -setautoproxystate "Wi-Fi" on
+  brew services start cntlm
+}
+
+employerPluginAndService() {
+  PLUGIN_DIR=~/Desktop/Workspace/autumn/plugins/s1n-employer-plugin
+  EMP_SVC_DIR=~/Desktop/Workspace/autumn/employer-service
+
+  cd $PLUGIN_DIR
+  mvn clean install
+  cd $EMP_SVC_DIR
+  mvn clean install -U
+  mvn spring-boot:run
+}
+
+productPluginAndService() {
+  PLUGIN_DIR=~/Desktop/Workspace/autumn/plugins/s1n-product-plugin
+  PRD_SVC_DIR=~/Desktop/Workspace/autumn/product-service
+
+  cd $PLUGIN_DIR
+  mvn clean install -U
+  cd $PRD_SVC_DIR
+  mvn clean install -U -DskipTests
+  mvn spring-boot:run
+}

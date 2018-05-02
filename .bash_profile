@@ -4,6 +4,8 @@
 
 #----- 2. LOAD SCRIPTS ------------------------#
 
+WORK_COMPUTER=LIBP45P-18293WL
+
 # java 7/8/9 toggle
 if [ -f $HOME/.config/.javatoggle ]; then
     . $HOME/.config/.javatoggle
@@ -47,6 +49,21 @@ else
     echo 'Git prompt not loaded!'
 fi
 
+# machine-specific config
+if [ "$HOSTNAME" = $WORK_COMPUTER ]; then
+  . $HOME/.config/.work_config
+else
+  echo 'Work config not loaded!'
+fi
+
+# npm completioin: https://github.com/Jephuff/npm-bash-completion
+if [ "$HOSTNAME" = $WORK_COMPUTER ]; then
+  PATH_TO_NPM_COMPLETION="/Users/n0290338/node_modules/npm-completion"
+  source $PATH_TO_NPM_COMPLETION/npm-completion.sh
+else
+  echo 'NPM completion not loaded!'
+fi
+
 welcomeMessage
 
 #-----------------------------------------------#
@@ -76,7 +93,3 @@ export PATH
 export SPRING_PROFILES_ACTIVE=local
 export EDITOR='gvim -v'
 export VISUAL='gvim -v'
-
- # added for npm-completion https://github.com/Jephuff/npm-bash-completion
-PATH_TO_NPM_COMPLETION="/Users/n0290338/node_modules/npm-completion"
-source $PATH_TO_NPM_COMPLETION/npm-completion.sh

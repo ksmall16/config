@@ -67,80 +67,11 @@ trash() {
   command mv "$@" ~/.Trash ;  
 }
 
-# --- ProxyOff ----
-# turn off cntlm proxy settings for LMdev network 
-proxyOff() {
-  echo 'Setting up proxyless env...'
-  git config --global --unset http.proxy
-  git config --global --unset https.proxy
-  npm config rm proxy
-  npm config rm https-proxy
-  unset HTTP_PROXY
-  unset HTTPS_PROXY
-  unset ALL_PROXY
-  unset http_proxy
-  unset https_proxy
-  unset all_proxy
-  echo '' > ~/.curlrc
-  echo '' > ~/.wgetrc
-  sudo networksetup -setautoproxystate "Wi-Fi" off
-  brew services stop cntlm
-}
-
-# --- ProxyOn ---
-# turn on proxy settings for LMdata network
-PROXY_ADDR=http://localhost:3128
-
-proxyOn() {
-  echo 'Setting up proxy env...'
-  sudo networksetup -setautoproxyurl "Wi-Fi" http://www-proxy-pac.lmig.com/proxy.pac
-  export HTTP_PROXY=$PROXY_ADDR
-  export HTTPS_PROXY=$PROXY_ADDR
-  export ALL_PROXY=$PROXY_ADDR
-  export http_proxy=$PROXY_ADDR
-  export https_proxy=$PROXY_ADDR
-  export all_proxy=$PROXY_ADDR
-  echo 'proxy=http://localhost:3128' > ~/.curlrc
-  echo 'use_proxy=yes' > ~/.wgetrc
-  echo 'http_proxy=http://localhost:3128' >> ~/.wgetrc
-  echo 'https_proxy=http://localhost:3128' >> ~/.wgetrc
-  git config --global http.proxy $PROXY_ADDR
-  git config --global https.proxy $PROXY_ADDR
-  npm config set proxy $PROXY_ADDR
-  npm config set https-proxy $PROXY_ADDR
-  sudo networksetup -setautoproxystate "Wi-Fi" on
-  brew services start cntlm
-}
-
 # --- [F]ind [P]ort ---
 # find process running on port $1
 findPort() {
   lsof -i tcp:$1  
 }
-
-#-----------------------------------------------------------------------
-employerPluginAndService() {
-  PLUGIN_DIR=~/Desktop/Workspace/autumn/plugins/s1n-employer-plugin
-  EMP_SVC_DIR=~/Desktop/Workspace/autumn/employer-service
-
-  cd $PLUGIN_DIR
-  mvn clean install
-  cd $EMP_SVC_DIR
-  mvn clean install -U
-  mvn spring-boot:run
-}
-
-productPluginAndService() {
-  PLUGIN_DIR=~/Desktop/Workspace/autumn/plugins/s1n-product-plugin
-  PRD_SVC_DIR=~/Desktop/Workspace/autumn/product-service
-
-  cd $PLUGIN_DIR
-  mvn clean install -U
-  cd $PRD_SVC_DIR
-  mvn clean install -U -DskipTests
-  mvn spring-boot:run
-}
-#----------------------------------------------------------------------
 
 # --- Global Extract --- #
 # will extract many file types
