@@ -1,92 +1,90 @@
-#---------- LOAD SCRIPTS ----------#
-# proxy
-export http_proxy=http://localhost:3128
-export https_proxy=http://localhost:3128
-print "(1) Proxies loaded!"
+#----- 1. RETURN IF NOT INTERACTIVE -----------#
+# prevents overwritten commands when in a script
+[ -z "$PS1" ] && return
 
-# java toggle
+# ---------- POWERLINE -------------#
+
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+  os_icon dir vcs
+)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+ status time
+)
+# prompt
+POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+POWERLEVEL9K_MODE='nerdfont-complete'
+# git prompt format
+POWERLEVEL9K_VCS_GIT_ICON=''
+POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
+POWERLEVEL9K_VCS_UNTRACKED_ICON='\u25CF'
+POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
+POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
+POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%}❯ "
+POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M \uf073 %m.%d.%y}"
+# battery
+POWERLEVEL9K_BATTERY_CHARGING='yellow'
+POWERLEVEL9K_BATTERY_CHARGED='green'
+POWERLEVEL9K_BATTERY_DISCONNECTED='$DEFAULT_COLOR'
+POWERLEVEL9K_BATTERY_LOW_THRESHOLD='10'
+POWERLEVEL9K_BATTERY_LOW_COLOR='red'
+POWERLEVEL9K_BATTERY_ICON='\uf1e6 '
+export ZSH=/Users/n0290338/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+#---------- LOAD SCRIPTS ----------#
+
+WORK_COMPUTER=LIBP45P-18293WL
+
+# java 7/8/9 toggle
 if [ -f ~/.config/.javatoggle ]; then
   source ~/.config/.javatoggle
-  print "(2) Java 7/8/9 loaded!"
+else
+  print "Java toggle not loaded!"
 fi
 
 # aliases
-if [ -f ~/.config/.aliasconfig ]; then 
+if [ -f ~/.config/.aliasconfig ]; then
   source ~/.config/.aliasconfig
-  print "(3) Aliases loaded!"
+else
+  print "Aliases not loaded!"
 fi
 
 # functions
 if [ -f ~/.config/.functions ]; then
 	source ~/.config/.functions
-	print "(4) Functions loaded!"
+else
+	print "Functionsi not loaded!"
 fi
 
-# maven
-if [ -f ~/.mavenconfig ]; then
+# maven config
+if [ -f ~/.config/.mavenconfig ]; then
   source ~/.config/.mavenconfig
-  print "(5) Maven loaded!"
+else
+  print "Maven config not loaded!"
 fi
 
-print "Load complete!"
+# machine-specific config
+if [ "$HOST" = $WORK_COMPUTER ]; then
+  source ~/.config/.work_config
+else
+  print 'Work config not loaded!'
+  print $HOST
+fi
+
+welcomeMessage
 
 #----------------------------------#
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-export ZSH=/Users/n0290338/.oh-my-zsh
-ZSH_THEME="awesomepanda"
-
-# HYPHEN_INSENSITIVE="true"
-# ENABLE_CORRECTION="true"  # Enable command auto-correction.
-
 COMPLETION_WAITING_DOTS="true"  # Display red dots while waiting for completion.
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+plugins=( git svn brew osx node npm z bower extract zsh-syntax-highlighting )
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+export LD_LIBRARY_PATH=/usr/local/apr/lib:$LD_LIBRARY_PATH
+PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/lib:/Users/n0290338/Documents/Useful_Tools:$PATH"
+export PATH
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=( git svn brew osx node npm z bower extract )
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
+export SPRING_PROFILES_ACTIVE=local
 export EDITOR='vim'
-
-PATH_TO_NPM_COMPLETION="/Users/n0290338/node_modules/npm-completion"
-source $PATH_TO_NPM_COMPLETION/npm-completion.sh
-
-source  ~/powerlevel9k/powerlevel9k.zsh-theme

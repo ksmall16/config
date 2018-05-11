@@ -89,7 +89,6 @@ export PATH
 #-----------------------------------------------#
 
 #----- 4. Other Settings -----------------------#
-
 export SPRING_PROFILES_ACTIVE=local
 export EDITOR='gvim -v'
 export VISUAL='gvim -v'

@@ -75,7 +75,7 @@ set linebreak
 set foldmethod=indent
 set foldnestmax=3
 set nofoldenable
-set guifont=PT\ Mono:h14
+set guifont=Inconsolata\ for\ Powerline:h15
 set ai
 set si
 

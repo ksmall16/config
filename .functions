@@ -42,7 +42,7 @@ fsr() {
 # --- [C]hange [D]irectory ---
 # moves to specified directory and does an automatic ls (overrides default)
 cd() {
-  builtin cd "$@" && ls -Aoh
+  builtin cd "$@" && ls
 }
 
 # --- [C]lean, [P]ackage, and [S]tart API ---
