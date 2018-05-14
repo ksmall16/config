@@ -23,7 +23,7 @@ POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
 POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%}❯ "
-POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M \uf073 %m.%d.%y}"
+POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %I:%M \uf073 %m/%d}"
 # battery
 POWERLEVEL9K_BATTERY_CHARGING='yellow'
 POWERLEVEL9K_BATTERY_CHARGED='green'
@@ -73,8 +73,6 @@ else
   print 'Work config not loaded!'
   print $HOST
 fi
-
-welcomeMessage
 
 #----------------------------------#
 

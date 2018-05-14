@@ -34,7 +34,7 @@ alias sz='source ~/.zshrc'
 alias top='htop'
 alias du='ncdu'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim -v'
-#alias ls='gls -Ahl --color --time-style=+"%Y-%m-%d %H:%M:%S"'
+alias ls='gls -Ahl --color --time-style=+"%Y-%m-%d %H:%M:%S"'
 alias mkdir='mkdir -pv'
 alias cat='pygmentize -O style=monokai -f console256 -g'
 
