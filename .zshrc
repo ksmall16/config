@@ -23,7 +23,7 @@ POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
 POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%}❯ "
-POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M \uf073 %m.%d.%y}"
+POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %I:%M \uf073 %m.%d.%y}"
 # battery
 POWERLEVEL9K_BATTERY_CHARGING='yellow'
 POWERLEVEL9K_BATTERY_CHARGED='green'
@@ -31,12 +31,13 @@ POWERLEVEL9K_BATTERY_DISCONNECTED='$DEFAULT_COLOR'
 POWERLEVEL9K_BATTERY_LOW_THRESHOLD='10'
 POWERLEVEL9K_BATTERY_LOW_COLOR='red'
 POWERLEVEL9K_BATTERY_ICON='\uf1e6 '
-export ZSH=/Users/n0290338/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 #---------- LOAD SCRIPTS ----------#
 
 WORK_COMPUTER=LIBP45P-18293WL
+HOME_COMPUTER=Home-MBP.local
 
 # java 7/8/9 toggle
 if [ -f ~/.config/.javatoggle ]; then
@@ -69,6 +70,8 @@ fi
 # machine-specific config
 if [ "$HOST" = $WORK_COMPUTER ]; then
   source ~/.config/.work_config
+elif [ "$HOST" = $HOME_COMPUTER ]; then
+  source ~/.config/.home_config
 else
   print 'Work config not loaded!'
   print $HOST
