@@ -1,35 +1,35 @@
-# shortcut to rename files 
-rename() { 
-  mv -i -v $1 $2 
+# shortcut to rename files
+rename() {
+  mv -i -v $1 $2
 }
 
 # [F]ind [P]id
 # find the pid of a process with given string
-findPid () { 
-  lsof -t -c "$@" ; 
+findPid () {
+  lsof -t -c "$@" ;
 }
 
 # --- [F]ind [D]irectory ---
-# search for directory by name in current location 
-fd() { 
-  sudo find -type d -name "$1" -print 
+# search for directory by name in current location
+fd() {
+  sudo find -type d -name "$1" -print
 }
 
 # --- [F]ind [F]ile ---
 # search for file by name in current location
 ff() {
-  sudo find -type f -name "$1" -print  
+  sudo find -type f -name "$1" -print
 }
 
 # --- [F]ind [D]irectory [R]ecursively ---
-# search for directory by name recursively 
+# search for directory by name recursively
 fdr() {
   sudo find ./* -type d -name "$1" -print
 }
 
 # --- [F]ind [F]ile [R]ecursively ---
 # search for file by name recursively
-ffr() { 
+ffr() {
   sudo find ./* -type f -name "$1" -print
 }
 
@@ -39,18 +39,12 @@ fsr() {
   grep -lrw $1 .
 }
 
-# --- [C]hange [D]irectory ---
-# moves to specified directory and does an automatic ls (overrides default)
-cd() {
-  builtin cd "$@" && ls
-}
-
 # --- [C]lean, [P]ackage, and [S]tart API ---
 # for use with Serverless functions
 cps() {
   mvn clean &&
   mvn package &&
-  sam local start-api -t serverless.yml; 
+  sam local start-api -t serverless.yml;
 }
 
 # --- Restart BTT ---
@@ -64,13 +58,13 @@ restartBTT() {
 #--- [T]rash ---#
 # moves given file to trash
 trash() {
-  command mv "$@" ~/.Trash ;  
+  command mv "$@" ~/.Trash ;
 }
 
 # --- [F]ind [P]ort ---
 # find process running on port $1
 findPort() {
-  lsof -i tcp:$1  
+  lsof -i tcp:$1
 }
 
 # --- Global Extract --- #
@@ -96,7 +90,7 @@ extract() {
   fi
 }
 
-# A motivating welcome message after sourcing .bash_profile
+# A motivating welcome message after sourcing
 welcomeMessage() {
   echo ''
   fortune | lolcat

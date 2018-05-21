@@ -92,3 +92,9 @@ export PATH
 export SPRING_PROFILES_ACTIVE=local
 export EDITOR='gvim -v'
 export VISUAL='gvim -v'
+
+# --- [C]hange [D]irectory ---
+# moves to specified directory and does an automatic ls (overrides default)
+cd() {
+  builtin cd "$@" && ls
+}
