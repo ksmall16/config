@@ -54,6 +54,9 @@ restartBTT() {
   open /Applications/BetterTouchTool.app/
 }
 
+tree.exceptNodeModules() {
+  tree -I "node_modules"
+}
 
 #--- [T]rash ---#
 # moves given file to trash
