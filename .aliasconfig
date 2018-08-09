@@ -67,6 +67,7 @@ alias brew.daily='echo "Brew: update, upgrade, cleanup & prune..." && brew updat
 alias brew.list='echo "brew services list" && brew services list'
 
 # npm
+alias updateComponentLibrary='npm i @lmig/lmb-react-component-lib@latest'
 alias npm.list.global='npm list -g --depth=0'
 
 # vagrant

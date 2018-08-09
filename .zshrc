@@ -55,6 +55,7 @@ POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %I:%M \uf073 %m/%d}"
 # ==============================================
 #     OH-MY-ZSH
 # ==============================================
+ZSH_DISABLE_COMPFIX=true
 export ZSH=~/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 

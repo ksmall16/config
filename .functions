@@ -1,3 +1,8 @@
+# git update date to current date & time
+gitDate() {
+  git commit  --amend --date="$(date -R)"
+}
+
 # shortcut to rename files
 rename() {
   mv -i -v $1 $2
@@ -91,6 +96,10 @@ extract() {
   else
     echo "'$1' is not a valid file!"
   fi
+}
+
+squash() {
+  git rebase -i HEAD~$1  
 }
 
 # A motivating welcome message after sourcing
