@@ -5,7 +5,6 @@
 [ -z "$PS1" ] && return
 
 
-
 # ==============================================
 #     PLUGINS
 # ==============================================
@@ -16,7 +15,6 @@ plugins=(
   node
   npm
   osx
-  svn
   z
   zsh-syntax-highlighting
 )
@@ -55,8 +53,9 @@ POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %I:%M \uf073 %m/%d}"
 # ==============================================
 #     OH-MY-ZSH
 # ==============================================
-ZSH_DISABLE_COMPFIX=true
 export ZSH=~/.oh-my-zsh
+ZSH_DISABLE_COMPFIX=true
+DISABLE_UNTRACKED_FILES_DIRTY=true
 source $ZSH/oh-my-zsh.sh
 
 
@@ -84,7 +83,7 @@ fi
 if [ -f ~/.config/.functions ]; then
 	source ~/.config/.functions
 else
-	print "Functionsi not loaded!"
+	print "Functions not loaded!"
 fi
 
 # maven config
@@ -116,8 +115,7 @@ chpwd() { ls }
 #     PATH VARIABLES & OTHER SETTINGS
 # ==============================================
 export LD_LIBRARY_PATH=/usr/local/apr/lib:$LD_LIBRARY_PATH
-PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/lib:/Users/n0290338/Documents/Useful_Tools:$PATH"
-export PATH
+export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/lib:/Users/n0290338/Documents/Useful_Tools:$PATH"
 
 export SPRING_PROFILES_ACTIVE=local
 export EDITOR='vim'

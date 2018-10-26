@@ -3,6 +3,15 @@ gitDate() {
   git commit  --amend --date="$(date -R)"
 }
 
+#bffDev() {
+#  npm run start:dev  
+#}
+
+# [M]aven [C]lean [I]nstall
+mciu() {
+  mvn clean install -U
+}
+
 # shortcut to rename files
 rename() {
   mv -i -v $1 $2

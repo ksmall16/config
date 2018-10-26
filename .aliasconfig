@@ -19,7 +19,8 @@ alias c='clear'
 # open in application
 alias storm='open -a /Applications/WebStorm.app/ '
 alias md='open -a /Applications/MacDown.app/ '
-alias idea='open -a /Applications/IntelliJ\ IDEA.app/ '
+#alias idea='open -a /Applications/IntelliJ\ IDEA.app/ '
+alias idea='open -a ~/Applications/JetBrains\ Toolbox/IntelliJ\ IDEA\ Ultimate.app/ pom.xml'
 alias atom='open -a /Applications/Atom\ Beta.app/ '
 
 # config access

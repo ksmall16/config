@@ -1,0 +1,5 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+b	/Users/n0290338/.config/.vimrc	/^map b 0$/;"	m	language:Vim
+base16colorspace	/Users/n0290338/.config/.vimrc	/^let base16colorspace=256$/;"	v	language:Vim
+e	/Users/n0290338/.config/.vimrc	/^map e \$$/;"	m	language:Vim
+g:solarized_termcolors	/Users/n0290338/.config/.vimrc	/^let g:solarized_termcolors=256$/;"	v	language:Vim
