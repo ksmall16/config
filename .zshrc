@@ -25,22 +25,25 @@ plugins=(
 # ==============================================
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-POWERLEVEL9K_PROMPT_ON_NEWLINE=false
-POWERLEVEL9K_MODE='nerdfont-complete'
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+#POWERLEVEL9K_MODE='nerdfont-complete'
 
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
 #  os_icon
 #  time
-  root_indicator
-  dir
-  vcs
-)
+#  root_indicator
+#  dir
+#  vcs
+#)
 
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
- status
- time
-)
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+# status
+# time
+#)
 
 #POWERLEVEL9K_VCS_GIT_ICON=''
 #POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
