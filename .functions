@@ -3,6 +3,23 @@ gitDate() {
   git commit  --amend --date="$(date -R)"
 }
 
+lmbM2() {
+  cp ~/.m2/settings-lmb.xml ~/.m2/settings.xml
+}
+
+lfgM2() {
+  cp ~/.m2/settings-lfg.xml ~/.m2/settings.xml
+}
+
+convertToProps() {
+  python ~/Desktop/Workspace/yaml2props/yaml2props.py $1
+}
+
+startPostgres() {
+  pg_ctl -D /usr/local/var/postgres start
+}
+
+
 #bffDev() {
 #  npm run start:dev  
 #}

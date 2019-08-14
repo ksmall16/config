@@ -23,13 +23,15 @@ plugins=(
 # ==============================================
 #     POWERLINE PROMPT
 # ==============================================
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=false
 POWERLEVEL9K_MODE='nerdfont-complete'
 
+
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-  os_icon
+#  os_icon
+#  time
   root_indicator
   dir
   vcs
@@ -40,14 +42,14 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
  time
 )
 
-POWERLEVEL9K_VCS_GIT_ICON=''
-POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
+#POWERLEVEL9K_VCS_GIT_ICON=''
+#POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
 
-POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
-POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
-POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
+#POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
+#POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
+#POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
 
-POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %I:%M \uf073 %m/%d}"
+#POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %I:%M \uf073 %m/%d}"
 
 
 # ==============================================
