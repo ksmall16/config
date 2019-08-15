@@ -20,6 +20,11 @@ startPostgres() {
 }
 
 
+# flash keyboard with md_loader
+flashAlt() {
+  ./mdloader_mac --first --download $1 --restart
+}
+
 #bffDev() {
 #  npm run start:dev  
 #}
