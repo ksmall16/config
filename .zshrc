@@ -24,35 +24,9 @@ plugins=(
 #     POWERLINE PROMPT
 # ==============================================
 ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_MODE='awesome-patched'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.config/.p10k.zsh ]] && source ~/.config/.p10k.zsh
-
-#POWERLEVEL9K_PROMPT_ON_NEWLINE=false
-#POWERLEVEL9K_MODE='nerdfont-complete'
-
-
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-#  os_icon
-#  time
-#  root_indicator
-#  dir
-#  vcs
-#)
-
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-# status
-# time
-#)
-
-#POWERLEVEL9K_VCS_GIT_ICON=''
-#POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
-
-#POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
-#POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
-#POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
-
-#POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %I:%M \uf073 %m/%d}"
 
 
 # ==============================================
@@ -71,11 +45,11 @@ WORK_COMPUTER=LIBP45P-18293WL
 HOME_COMPUTER=Home-MBP.local
 
 # java 7/8/9 toggle
-if [ -f ~/.config/.javatoggle ]; then
-  source ~/.config/.javatoggle
-else
-  print "Java toggle not loaded!"
-fi
+#if [ -f ~/.config/.javatoggle ]; then
+#  source ~/.config/.javatoggle
+#else
+#  print "Java toggle not loaded!"
+#fi
 
 # aliases
 if [ -f ~/.config/.aliasconfig ]; then

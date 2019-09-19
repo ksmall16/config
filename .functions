@@ -1,3 +1,19 @@
+# unset global Git password
+gitUnsetPassword() {
+  git config --global credential.helper osxkeychain
+}
+
+# turn on LFG proxy
+proxyOn() {
+  export http_proxy=http://localhost:3128 && export https_proxy=http://localhost:3128
+}
+
+# turn off LFG proxy
+proxyOff() {
+  unset http_proxy https_proxy
+}
+
+
 # git update date to current date & time
 gitDate() {
   git commit  --amend --date="$(date -R)"
