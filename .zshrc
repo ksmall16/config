@@ -41,7 +41,8 @@ source $ZSH/oh-my-zsh.sh
 # ==============================================
 #     LOAD SCRIPTS
 # ==============================================
-WORK_COMPUTER=LIBP45P-18293WL
+LMB_COMPUTER=LIBP45P-18293WL
+LFG_COMPUTER=NH2-4DULVDQ-Mac
 HOME_COMPUTER=Home-MBP.local
 
 # java 7/8/9 toggle
@@ -73,7 +74,7 @@ else
 fi
 
 # machine-specific config
-if [ "$HOST" = $WORK_COMPUTER ]; then
+if [ "$HOST" = $LMB_COMPUTER ] || [ "$HOST" = $LFG_COMPUTER ]; then
   source ~/.config/.work_config
 elif [ "$HOST" = $HOME_COMPUTER ]; then
   source ~/.config/.home_config

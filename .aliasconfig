@@ -1,26 +1,17 @@
 WORKSPACE=~/Desktop/Workspace
 
 # terminal navigation & info
-alias ..='cd ..'
-alias ..2='cd ../..'
-alias ..3='cd ../../..'
-alias ..4='cd ../../../..'
 alias javav='echo "java -version" && java -version'
 alias vv='vim ~/.config/.vimrc'
 alias gv='vim ~/.config/.gvimrc'
-alias scratch='vim ~/scratch.md'
 alias psef='ps -ef | grep '
 alias killp='kill -9'
 alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
 alias rmf='rm -rf'
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
-alias c='clear'
 
 # open in application
-#alias storm='open -a /Applications/WebStorm.app/ '
 alias md='open -a /Applications/MacDown.app/ '
-#alias idea='open -a /Applications/IntelliJ\ IDEA.app/ '
-#alias idea='open -a ~/Applications/JetBrains\ Toolbox/IntelliJ\ IDEA\ Ultimate.app/ pom.xml'
 alias atom='open -a /Applications/Atom\ Beta.app/ '
 
 # config access
@@ -70,16 +61,6 @@ alias brew.list='echo "brew services list" && brew services list'
 # npm
 alias updateComponentLibrary='npm i @lmig/lmb-react-component-lib@latest'
 alias npm.list.global='npm list -g --depth=0'
-
-# vagrant
-alias vup='vagrant up; vagrant ssh'
-alias vhalt='vagrant halt'
-alias vsh='vagrant ssh'
-alias vreload='vagrant reload'
-alias vval='vagrant validate'
-
-# sonar
-alias sonar='sonarlint && open .sonarlint/sonarlint-report.html'
 
 # docker
 alias dps='docker ps'
