@@ -3,28 +3,9 @@ gitUnsetPassword() {
   git config --global credential.helper osxkeychain
 }
 
-# turn on LFG proxy
-proxyOn() {
-  export http_proxy=http://localhost:3128 && export https_proxy=http://localhost:3128
-}
-
-# turn off LFG proxy
-proxyOff() {
-  unset http_proxy https_proxy
-}
-
-
 # git update date to current date & time
 gitDate() {
   git commit  --amend --date="$(date -R)"
-}
-
-lmbM2() {
-  cp ~/.m2/settings-lmb.xml ~/.m2/settings.xml
-}
-
-lfgM2() {
-  cp ~/.m2/settings-lfg.xml ~/.m2/settings.xml
 }
 
 convertToProps() {
@@ -35,15 +16,10 @@ startPostgres() {
   pg_ctl -D /usr/local/var/postgres start
 }
 
-
 # flash keyboard with md_loader
 flashAlt() {
   ./mdloader_mac --first --download $1 --restart
 }
-
-#bffDev() {
-#  npm run start:dev  
-#}
 
 # [M]aven [C]lean [I]nstall
 mciu() {
@@ -146,7 +122,7 @@ extract() {
 }
 
 squash() {
-  git rebase -i HEAD~$1  
+  git rebase -i HEAD~$1
 }
 
 # A motivating welcome message after sourcing
