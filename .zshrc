@@ -11,6 +11,7 @@
 plugins=(
   brew
   git
+  gradle
   mvn
   node
   npm
@@ -45,12 +46,12 @@ LMB_COMPUTER=LIBP45P-18293WL
 LFG_COMPUTER=NH2-4DULVDQ-Mac
 HOME_COMPUTER=Home-MBP.local
 
-# java 7/8/9 toggle
-#if [ -f ~/.config/.javatoggle ]; then
-#  source ~/.config/.javatoggle
-#else
-#  print "Java toggle not loaded!"
-#fi
+# java version toggle
+if [ -f ~/.config/.javatoggle ]; then
+  source ~/.config/.javatoggle
+else
+  print "Java toggle not loaded!"
+fi
 
 # aliases
 if [ -f ~/.config/.aliasconfig ]; then
