@@ -1,5 +1,7 @@
 WORKSPACE=~/Desktop/Workspace
 
+alias youtubeAudio='youtube-dl -x --audio-format "m4a"'
+
 # terminal navigation & info
 alias javav='echo "java -version" && java -version'
 alias vv='vim ~/.config/.vimrc'
@@ -9,10 +11,11 @@ alias killp='kill -9'
 alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
 alias rmf='rm -rf'
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
+alias treed='tree -d'
 
 # open in application
 alias md='open -a /Applications/MacDown.app/ '
-alias atom='open -a /Applications/Atom\ Beta.app/ '
+alias atom='open -a /Applications/Atom.app/ '
 
 # config access
 alias va='vim ~/.config/.aliasconfig'
@@ -61,6 +64,7 @@ alias brew.list='echo "brew services list" && brew services list'
 # npm
 alias updateComponentLibrary='npm i @lmig/lmb-react-component-lib@latest'
 alias npm.list.global='npm list -g --depth=0'
+alias reinstallNodeModules='rm -rf node_modules && rm package-lock.json && npm i'
 
 # docker
 alias dps='docker ps'

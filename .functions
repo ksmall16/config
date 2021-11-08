@@ -1,3 +1,19 @@
+gitLogBranch() {
+  git log --graph -abbrev-commit --decorate --first-parent $1 --oneline
+}
+
+npmBuildStart() {
+  npm run build && npm run start
+}
+
+nodeSslCert() {
+  export NODE_TLS_REJECT_UNAUTHORIZED=0
+}
+
+nodeLocalCert() {
+  export NODE_TLS_REJECT_UNAUTHORIZED=1
+}
+
 # unset global Git password
 gitUnsetPassword() {
   git config --global credential.helper osxkeychain

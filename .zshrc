@@ -10,11 +10,13 @@
 # ==============================================
 plugins=(
   brew
+  docker
   git
   gradle
   mvn
   node
   npm
+  nvm
   osx
   z
   zsh-syntax-highlighting
@@ -44,7 +46,7 @@ source $ZSH/oh-my-zsh.sh
 # ==============================================
 LMB_COMPUTER=LIBP45P-18293WL
 LFG_COMPUTER=NH2-4DULVDQ-Mac
-HOME_COMPUTER=Home-MBP.local
+HOME_COMPUTER=Kinseys-Personal-MacBook-Pro.local
 
 # java version toggle
 if [ -f ~/.config/.javatoggle ]; then
@@ -72,6 +74,13 @@ if [ -f ~/.config/.mavenconfig ]; then
   source ~/.config/.mavenconfig
 else
   print "Maven config not loaded!"
+fi
+
+# environment config
+if [ -f ~/.config/.environment ]; then
+  source ~/.config/.environment
+else
+  print "Environment config not loaded!"
 fi
 
 # machine-specific config

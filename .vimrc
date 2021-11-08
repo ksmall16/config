@@ -14,7 +14,7 @@ set t_Co=256
 
 filetype off				" Required for Vundle
 
-" call vundle#begin() " call Vundle plugins ------------------------------ 
+" call vundle#begin() " call Vundle plugins ------------------------------
 "
 "  " utility
 "  Plugin 'VundleVim/Vundle.vim'
@@ -54,10 +54,10 @@ set smartcase
 set nowrap
 set number
 syntax on
-set autoindent 
+set autoindent
 set smartindent
 set smarttab
-set tabstop=2 
+set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
@@ -78,6 +78,7 @@ set si
 
 " linebreak on 500 chars
 set lbr
+set wrap linebreak nolist
 set tw=500
 
 " remapping
